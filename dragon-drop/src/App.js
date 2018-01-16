@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './stylesheets/App.css';
 
 import Card from './components/card.jsx'
+import Hand from './components/hand.jsx'
+import Button from './components/button.jsx'
 
 class App extends Component {
   render() {
@@ -16,8 +18,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Card />
-        <Card />
+        <Hand />
+        <Button />
       </div>
     );
   }

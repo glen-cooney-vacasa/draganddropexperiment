@@ -7,7 +7,7 @@ const debugStyle = {
 
 const originX = 50;
 const originY = 200;
-const rotateDeg = -10;
+// const rotateDeg = -10;
 
 const card = {
   marginLeft: `200px`,
@@ -22,11 +22,11 @@ const card = {
   webkitTransformOrigin:`${originX}% ${originY}%`
 }
 
-const rotate = {
-  transform: `rotate(${rotateDeg}deg)`,
-  msTransform: `rotate(${rotateDeg}deg)`,
-  webkitTransform: `rotate(${rotateDeg}deg)`
-}
+// const rotate = {
+//   transform: `rotate(${rotateDeg}deg)`,
+//   msTransform: `rotate(${rotateDeg}deg)`,
+//   webkitTransform: `rotate(${rotateDeg}deg)`
+// }
 
 class Card extends Component {
   constructor(props){
@@ -36,7 +36,10 @@ class Card extends Component {
     
     this.state = {
       cardStyles: card,
-      toggleSpin: false
+      toggleSpin: false,
+      originX: this.props.originX,
+      originY: this.props.originY,
+      angle: this.props.angle
     }
   }
   
