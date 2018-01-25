@@ -15,7 +15,8 @@ class Hand extends Component {
     this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-      toggleFan: false
+      toggleFan: false,
+      style: this.getHandOrientation()
     }
   }
 
@@ -28,16 +29,33 @@ class Hand extends Component {
       return spreadAngle;
   }
 
+  getHandOrientation(){
+    return {
+      // transformOrigin: "50% 50%",
+      // msTransformOrigin:"50% 50%",
+      // WebkitTransformOrigin:"50% 50%",
+      transform: "rotate(-20deg)",
+      msTransform: "rotate(-20deg)",
+      WebkitTransform: "rotate(-20deg)"
+    }
+  }
+
   render() {
     var i = 0;
     var cards = _.times(handSize, ()=>{
-      return <Card originX={originX} originY={originY} angle={5*i} key={i++}/>
+      return <Card
+                originX={originX}
+                originY={originY}
+                angle={5*i}
+                key={i++}
+                text={`This is card ${i}`}/>
     });
 
     return (
-      <div className="hand">
-        <p>Hand loaded</p>
-        {cards}
+      <div>
+        <div className="hand" style={this.state.style}>
+          {cards}
+        </div>
       </div>
     );
   }

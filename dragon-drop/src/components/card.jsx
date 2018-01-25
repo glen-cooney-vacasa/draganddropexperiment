@@ -103,7 +103,9 @@ class Card extends Component {
         <div style={this.state.cardStyles}
              onClick={this.handleClick}
              onMouseEnter={this.toggleHover}
-             onMouseLeave={this.toggleHover}>
+             onMouseLeave={this.toggleHover}
+        >
+             {this.props.text}
         </div>
       </div>
     );
