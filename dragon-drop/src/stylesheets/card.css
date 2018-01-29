@@ -1,4 +1,5 @@
 .card {
   display: none;
   position: absolute;
+  background-image: url("../images/icons/all-seeing-eye.svg");
 }

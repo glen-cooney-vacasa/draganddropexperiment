@@ -29,7 +29,7 @@ class App extends Component {
       <div className="App">
         <div className="App">
           <Region></Region>
-          <Card text={"Test"}></Card>
+          <Card text={"Fuck up target player's shit."}></Card>
         </div>
       </div>
     );

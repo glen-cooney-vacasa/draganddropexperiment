@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Region from './region.jsx'
 import '../stylesheets/card.css';
+import TestIcon from '../images/icons/all-seeing-eye.svg';
 
 class Card extends Component {
   constructor(props){
@@ -12,7 +13,8 @@ class Card extends Component {
     this.state = {
       hover: false,
       toggleSpin: false,
-      cardStyles: Object.assign({}, this.getCardStyle(), this.getTransform())
+      cardStyles: Object.assign({}, this.getCardStyle(), this.getTransform()),
+      iconStyle: this.getIconStyle()
     }
   }
 
@@ -46,6 +48,17 @@ class Card extends Component {
     }
   }
 
+  getIconStyle(){
+    return {
+      backgroundImage: `url(${TestIcon})`,
+      width: 80,
+      height: 80,
+      margin: `auto`,
+      backgroundPosition: `center center`,
+      backgroundRepeat: `no-repeat`
+    }
+  }
+
   getTransform(){
     return {
       transform: `rotate(${this.props.angle}deg)`,
@@ -73,11 +86,11 @@ class Card extends Component {
   render() {
     return (
       <div className="Card">
-        <Region>
-          <div style={this.state.cardStyles}
+        <Region style={this.state.cardStyles}
                onClick={this.handleClick}
                onMouseEnter={this.toggleHover}
-               onMouseLeave={this.toggleHover}></div>
+               onMouseLeave={this.toggleHover}>
+             <div className='IconsTest' style={this.state.iconStyle}></div>
              {this.props.text}
         </Region>
 
