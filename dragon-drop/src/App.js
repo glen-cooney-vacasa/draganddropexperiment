@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './stylesheets/App.css';
 
 import Card from './components/card.jsx'
-// import Hand from './components/hand.jsx'
+import Hand from './components/hand.jsx'
 import Region from './components/region.jsx'
 // import Button from './components/button.jsx'
 // import { DragDropContext } from 'react-dnd';
@@ -28,8 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App">
-          <Region></Region>
-          <Card text={"Fuck up target player's shit."}></Card>
+          <Hand mode='horizontal'></Hand>
         </div>
       </div>
     );

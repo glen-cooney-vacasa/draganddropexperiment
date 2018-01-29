@@ -16,7 +16,8 @@ class Hand extends Component {
 
     this.state = {
       toggleFan: false,
-      style: this.getHandOrientation()
+      style: this.getStyle(),
+      mode: this.props.mode
     }
   }
 
@@ -29,11 +30,66 @@ class Hand extends Component {
       return spreadAngle;
   }
 
+  getStyle(){
+    return {
+      display: `inline-block`
+    }
+  }
+
+  generateHand(){
+    var hand = {};
+    var cards = [];
+    var i = 0;
+
+    switch(this.state.mode){
+      case 'horizontal':
+        console.log(`horizontal hand`);
+        cards = _.times(handSize, ()=>{
+          return (
+            <Card
+              overlap={false}
+              key={i++}
+              text={`This is card ${i}`}
+            >
+            </Card>
+          )
+        })
+
+        break;
+      case 'traditional':
+        console.log(`traditional hand`);
+        //Move to factory
+        cards = _.times(handSize, ()=>{
+          return <Card
+                    originX={originX}
+                    originY={originY}
+                    angle={5*i}
+                    key={i++}
+                    text={`This is card ${i}`}
+                 />
+        });
+
+        this.setState({
+          style: Object.assign({}, this.getStyle(), this.getHandOrientation())
+        });
+
+        break;
+      default:
+        console.warn(`No hand mode selected.`);
+        break;
+    }
+
+    hand = (
+      <div className="hand" style={this.state.style}>
+        {cards}
+      </div>
+    )
+
+    return hand;
+  }
+
   getHandOrientation(){
     return {
-      // transformOrigin: "50% 50%",
-      // msTransformOrigin:"50% 50%",
-      // WebkitTransformOrigin:"50% 50%",
       transform: "rotate(-20deg)",
       msTransform: "rotate(-20deg)",
       WebkitTransform: "rotate(-20deg)"
@@ -41,15 +97,18 @@ class Hand extends Component {
   }
 
   render() {
-    var i = 0;
-    var cards = _.times(handSize, ()=>{
-      return <Card
-                originX={originX}
-                originY={originY}
-                angle={5*i}
-                key={i++}
-                text={`This is card ${i}`}/>
-    });
+    // var i = 0;
+    // var cards = _.times(handSize, ()=>{
+    //   return <Card
+    //             originX={originX}
+    //             originY={originY}
+    //             angle={5*i}
+    //             key={i++}
+    //             text={`This is card ${i}`}
+    //          />
+    // });
+
+    var cards = this.generateHand();
 
     return (
       <div>
