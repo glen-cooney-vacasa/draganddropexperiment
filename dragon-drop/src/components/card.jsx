@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import sizeMe from 'react-sizeme'
+
 import Region from './region.jsx'
 import '../stylesheets/card.css';
 import CardImage from './cardImage.jsx'
@@ -13,7 +15,7 @@ class Card extends Component {
     this.state = {
       hover: false,
       toggleSpin: false,
-      cardStyles: this.getCardStyle()
+      style: this.getStyle()
     }
   }
 
@@ -21,12 +23,9 @@ class Card extends Component {
     console.log(`card hover`);
   };
 
-  getCardStyle(){
+  getStyle(){
     return {
-      width: `100%`,
-      height: `100%`,
-      backgroundColor: 'lightgray',
-      left: `${this.props.index * this.width}`
+      backgroundColor: 'lightgray'
     }
   }
 
@@ -37,18 +36,18 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-          <div className="EventLayer"
+          <div className="event-layer"
                   onClick={this.handleClick}
                   onMouseEnter={this.toggleHover}
                   onMouseLeave={this.toggleHover}>
             <Region originX={this.props.originX}
                     originY={this.props.originY}
                     angle={this.props.angle}
+                    index={this.props.index}
+                    style={this.state.style}
               >
-              <div style={this.state.cardStyles}>
                 <CardImage></CardImage>
                 {this.props.text}
-              </div>
             </Region>
           </div>
       </div>

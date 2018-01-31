@@ -8,25 +8,20 @@ class CardImage extends Component {
     super(props);
 
     this.state = {
-      iconStyle: this.getIconStyle()
+      iconStyle: this.getIcon()
     }
   }
 
-  getIconStyle(){
+  getIcon(){
     return {
-      backgroundImage: `url(${TestIcon})`,
-      width: 80,
-      height: 80,
-      margin: `auto`,
-      backgroundPosition: `center center`,
-      backgroundRepeat: `no-repeat`
+      backgroundImage: `url(${TestIcon})`
     }
   }
 
   render() {
     return (
-      <div className="CardImage">
-          <div className='IconsTest' style={this.state.iconStyle}></div>
+      <div>
+          <div className='card-image' style={this.state.iconStyle}></div>
       </div>
     );
   }

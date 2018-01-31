@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Card from './card.jsx'
-import '../stylesheets/card.css';
+
 import _ from 'lodash';
+
+import '../stylesheets/hand.css';
 
 const originX = 50;
 const originY = 200;
@@ -16,7 +18,6 @@ class Hand extends Component {
 
     this.state = {
       toggleFan: false,
-      style: this.getStyle(),
       mode: this.props.mode
     }
   }
@@ -28,12 +29,6 @@ class Hand extends Component {
   getNewAngle(){
       this.spreadAngle+=this.spreadAngle
       return spreadAngle;
-  }
-
-  getStyle(){
-    return {
-      display: `inline-block`
-    }
   }
 
   generateHand(){
@@ -65,6 +60,7 @@ class Hand extends Component {
                     originY={originY}
                     angle={5*i}
                     key={i++}
+                    index={i}
                     text={`This is card ${i}`}
                  />
         });
@@ -80,7 +76,7 @@ class Hand extends Component {
     }
 
     hand = (
-      <div className="hand" style={this.state.style}>
+      <div className="cards-container">
         {cards}
       </div>
     )
@@ -97,24 +93,11 @@ class Hand extends Component {
   }
 
   render() {
-    // var i = 0;
-    // var cards = _.times(handSize, ()=>{
-    //   return <Card
-    //             originX={originX}
-    //             originY={originY}
-    //             angle={5*i}
-    //             key={i++}
-    //             text={`This is card ${i}`}
-    //          />
-    // });
-
     var cards = this.generateHand();
 
     return (
-      <div>
-        <div className="hand" style={this.state.style}>
-          {cards}
-        </div>
+      <div className="hand">
+        {cards}
       </div>
     );
   }

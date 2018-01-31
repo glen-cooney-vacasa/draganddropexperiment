@@ -1,7 +1,12 @@
 .card {
   display: inline-block;
-  margin: 5px;
-  width: 8%;
-  position: fixed;
-  top: 80%;
+  margin: 2px;
+}
+
+.card-image{
+  width: 8vw;
+  height: 8vw;
+  margin: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
 }

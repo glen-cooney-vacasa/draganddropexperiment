@@ -1,7 +1,7 @@
 .card-shape {
-  width: 100px;
-  height: 150px;
-  border-radius: 8px;
+  width: 12vw;
+  height: 16vw;
+  border-radius: 1vw;
 }
 
 .region-container {
@@ -18,11 +18,4 @@
 .blank-region {
   background-color: blue;
   opacity: 0.25;
-}
-
-.region {
-  width: 100px;
-  height: 150px;
-  float: left;
-  position: absolute;
 }
