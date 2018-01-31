@@ -48,7 +48,7 @@ class Hand extends Component {
             >
             </Card>
           )
-        })
+        });
 
         break;
       case 'traditional':
@@ -84,13 +84,13 @@ class Hand extends Component {
     return hand;
   }
 
-  getHandOrientation(){
-    return {
-      transform: "rotate(-20deg)",
-      msTransform: "rotate(-20deg)",
-      WebkitTransform: "rotate(-20deg)"
-    }
-  }
+  // getHandOrientation(){
+  //   return {
+  //     transform: "rotate(-20deg)",
+  //     msTransform: "rotate(-20deg)",
+  //     WebkitTransform: "rotate(-20deg)"
+  //   }
+  // }
 
   render() {
     var cards = this.generateHand();
