@@ -1,5 +1,7 @@
 .card {
-  display: none;
-  position: absolute;
-  background-image: url("../images/icons/all-seeing-eye.svg");
+  display: inline-block;
+  margin: 5px;
+  width: 8%;
+  position: fixed;
+  top: 80%;
 }

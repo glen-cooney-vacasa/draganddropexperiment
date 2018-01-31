@@ -6,7 +6,7 @@ import _ from 'lodash';
 const originX = 50;
 const originY = 200;
 const spreadAngle = 5;
-const handSize = 10;
+const handSize = 5;
 
 class Hand extends Component {
   constructor(props){
@@ -47,8 +47,8 @@ class Hand extends Component {
         cards = _.times(handSize, ()=>{
           return (
             <Card
-              overlap={false}
               key={i++}
+              index={i}
               text={`This is card ${i}`}
             >
             </Card>

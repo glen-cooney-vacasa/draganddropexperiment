@@ -25,7 +25,8 @@ class Card extends Component {
     return {
       width: `100%`,
       height: `100%`,
-      backgroundColor: 'lightgray'
+      backgroundColor: 'lightgray',
+      left: `${this.props.index * this.width}`
     }
   }
 
@@ -35,7 +36,7 @@ class Card extends Component {
 
   render() {
     return (
-      <div className="Card">
+      <div className="card">
           <div className="EventLayer"
                   onClick={this.handleClick}
                   onMouseEnter={this.toggleHover}
