@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import sizeMe from 'react-sizeme'
 
 import Region from './region.jsx'
 import '../stylesheets/card.css';
@@ -10,41 +9,46 @@ class Card extends Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-    this.toggleHover = this.toggleHover.bind(this);
+
+    let scale = this.props.scale || 0.5
 
     this.state = {
       hover: false,
       toggleSpin: false,
-      style: this.getStyle()
+      scale: scale
     }
   }
-
-  toggleHover(){
-    console.log(`card hover`);
-  };
 
   getStyle(){
     return {
-      backgroundColor: 'lightgray'
+      backgroundColor: 'lightgray',
+      transform: `scale(${this.state.scale}, ${this.state.scale})`,
+      MsTransform: `scale(${this.state.scale}, ${this.state.scale})`,
+      WebkitTransform: `scale(${this.state.scale}, ${this.state.scale})`
     }
   }
 
-  handleClick(){
-    console.log(`clicking card`);
+  handleClick(e){
+    e.preventDefault();
+
+    this.props.onCardClick(this);
+  }
+
+  componentDidMount(e){
+    this.setState({
+      style: this.getStyle()
+    })
   }
 
   render() {
     return (
-      <div className="card">
+      <div className="card" style = {this.state.style}>
           <div className="event-layer"
                   onClick={this.handleClick}
                   onMouseEnter={this.toggleHover}
                   onMouseLeave={this.toggleHover}>
-            <Region originX={this.props.originX}
-                    originY={this.props.originY}
+            <Region
                     angle={this.props.angle}
-                    index={this.props.index}
-                    style={this.state.style}
               >
                 <CardImage></CardImage>
                 {this.props.text}

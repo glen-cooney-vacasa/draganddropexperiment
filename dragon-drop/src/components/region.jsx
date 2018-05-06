@@ -15,20 +15,6 @@ class Region extends Component {
     }
   }
 
-  // TODO fix later for "traditional" hand layout
-  // getRegionStyles(){
-  //   let offset = this.props.index * this.props.size.width;
-  //
-  //   return {
-  //     transformOrigin: `${this.props.originX}% ${this.props.originY}%`,
-  //     msTransformOrigin:`${this.props.originX}% ${this.props.originY}%`,
-  //     WebkitTransformOrigin:`${this.props.originX}% ${this.props.originY}%`,
-  //     transform: `rotate(${this.props.angle}deg)`,
-  //     msTransform: `rotate(${this.props.angle}deg)`,
-  //     WebkitTransform: `rotate(${this.props.angle}deg)`
-  //   }
-  // }
-
   render() {
     var containerStyles = classNames("region-container", "card-shape");
     var regionStyles = classNames({
