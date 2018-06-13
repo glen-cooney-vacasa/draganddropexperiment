@@ -6,30 +6,40 @@ import Card from './components/card.jsx'
 import Hand from './components/hand.jsx'
 import Region from './components/region.jsx'
 import Supply from './components/supply.jsx'
+import Deck from './components/deck.jsx'
 // import Button from './components/button.jsx'
 // import { DragDropContext } from 'react-dnd';
+
+import Player from './stores/player.js';
+import DeckData from './stores/deck.js';
+
+import _ from 'lodash';
 
 class App extends Component {
   constructor(props){
     super(props);
 
+    let testCards = _.range(25);
+
     this.state = {
-        handSize: 5
+        handSize: -1,
+        player: new Player(),
+        deck: new DeckData(testCards)
     }
 
     this.gainCard = this.gainCard.bind(this);
     this.getHandSize = this.getHandSize.bind(this);
   }
 
-  // TODO create CardActionService
-  gainCard(cardType){
-    let newHandSize = this.state.handSize + 1;
-
+  componentDidMount(){
     this.setState({
-      handSize: newHandSize
+      handSize: this.state.player.cards.hand.length
     });
+  }
 
-    console.log(`Hand size is now ${this.state.props.handSize}`);
+  gainCard(){
+    console.log(`Card drawn`);
+    this.state.player.drawCard(this.state.deck);
   }
 
   // TODO create backend to handle this request instead
@@ -38,27 +48,30 @@ class App extends Component {
   }
 
   getHandSize(){
-    return this.state.handSize;
+    return this.state.player.cards.hand.length
+    // return this.state.handSize;
   }
 
-  supplyCardClicked(card){
-    console.log(`Supply card "${card.props.text}" clicked.`);
-  }
+  // supplyCardClicked(card){
+  //
+  // }
 
   render() {
     return (
       <div className="App">
-        <Supply
+        <Deck></Deck>
+        {/*<Supply
           onCardClick={this.supplyCardClicked}
           cardsVertical={2}
           cardsHorizontal={5}
-          ></Supply>
+          ></Supply>*/}
         <Hand
             mode='horizontal'
             onCardClick={this.onCardClick}
             handSize={this.getHandSize()}
         ></Hand>
-        <button onClick={this.gainCard}>Gain Card</button>
+      <button onClick={this.gainCard}>Gain Card</button>
+
       </div>
     );
   }

@@ -14,7 +14,6 @@ class Card extends Component {
 
     this.state = {
       hover: false,
-      toggleSpin: false,
       scale: scale
     }
   }
@@ -44,9 +43,7 @@ class Card extends Component {
     return (
       <div className="card" style = {this.state.style}>
           <div className="event-layer"
-                  onClick={this.handleClick}
-                  onMouseEnter={this.toggleHover}
-                  onMouseLeave={this.toggleHover}>
+                  onClick={this.handleClick}>
             <Region
                     angle={this.props.angle}
               >
